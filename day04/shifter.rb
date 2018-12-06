@@ -75,3 +75,17 @@ id = find_sleepiest_guard guards
 max_min = find_best_minute(guards, id)[0]
 
 puts "Part one solution: #{max_min.to_i * id.to_i}"
+
+chosen_guard = 0
+minute = 0
+times = 0
+guards.each_key do |key|
+  best_minute = find_best_minute(guards, key)
+  if (best_minute[1] > times)
+    chosen_guard = key
+    minute = best_minute[0]
+    times = best_minute[1]
+  end
+end
+
+puts "Part two solution: #{chosen_guard.to_i * minute.to_i}"
